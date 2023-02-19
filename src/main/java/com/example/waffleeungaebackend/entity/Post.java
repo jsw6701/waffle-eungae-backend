@@ -4,14 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Builder
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,16 +26,26 @@ public class Post {
     // 작성일
     private LocalDateTime createDate;
 
-    @ManyToOne
+    // 상태
+    private Boolean status;
+
+/*    @ManyToOne
     @JoinColumn(name = "memberId")
     // 작성자 아이디
-    private Member member;
+    private Member member;*/
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
     // 카테고리 아이디
     private Category category;
 
-    // 상태
-    private Boolean status;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<Comment> commentList = new ArrayList<>();
+
+    @Builder
+    public Post(String title, String content, LocalDateTime createDate){
+        this.title = title;
+        this.content = content;
+        this.createDate = createDate;
+    }
 }

@@ -6,12 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Builder
-@AllArgsConstructor
-@RequiredArgsConstructor
 @Getter
-@Setter
-@ToString
+@NoArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,18 +23,26 @@ public class Comment {
     // 작성일
     private LocalDateTime createDate;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "memberId")
     // 작성자 아이디
-    private Member member;
+    private Member member;*/
 
     @ManyToOne
     @JoinColumn(name = "postId")
     // 게시글 아이디
     private Post post;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "parentId")
     // 부모 댓글
-    private Comment comment;
+    private Comment comment;*/
+
+    @Builder
+    public Comment(String content, LocalDateTime createDate, Integer like, Post post){
+        this.content = content;
+        this.createDate = createDate;
+        this.like = like;
+        this.post = post;
+    }
 }
