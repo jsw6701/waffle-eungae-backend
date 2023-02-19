@@ -1,5 +1,6 @@
 package com.example.waffleeungaebackend.entity;
 
+import com.example.waffleeungaebackend.dto.PostDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,9 +27,6 @@ public class Post {
     // 작성일
     private LocalDateTime createDate;
 
-    // 상태
-    private Boolean status;
-
 /*    @ManyToOne
     @JoinColumn(name = "memberId")
     // 작성자 아이디
@@ -47,5 +45,14 @@ public class Post {
         this.title = title;
         this.content = content;
         this.createDate = createDate;
+    }
+
+    public PostDto toDto() {
+        return PostDto.builder()
+                .title(title)
+                .content(content)
+                .createDate(LocalDateTime.now())
+                .categoryId(category.getCategoryId())
+                .build();
     }
 }
