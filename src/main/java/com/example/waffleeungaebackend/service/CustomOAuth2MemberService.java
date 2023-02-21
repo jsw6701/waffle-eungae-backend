@@ -1,7 +1,7 @@
 package com.example.waffleeungaebackend.service;
 
 import com.example.waffleeungaebackend.dto.OAuthAttributes;
-import com.example.waffleeungaebackend.dto.SessionUser;
+import com.example.waffleeungaebackend.dto.SessionMember;
 import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class CustomOAuth2MemberService implements OAuth2UserService <OAuth2UserR
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         Member member  = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(member));
+        httpSession.setAttribute("user", new SessionMember(member));
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority(member.getRoleKey())),
