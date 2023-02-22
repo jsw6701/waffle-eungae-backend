@@ -1,5 +1,6 @@
 package com.example.waffleeungaebackend.entity;
 
+import com.example.waffleeungaebackend.dto.CommentDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,6 +8,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Comment {
     @Id
@@ -38,11 +41,12 @@ public class Comment {
     // 부모 댓글
     private Comment comment;*/
 
-    @Builder
-    public Comment(String content, LocalDateTime createDate, Integer like, Post post){
-        this.content = content;
-        this.createDate = createDate;
-        this.like = like;
-        this.post = post;
+    public CommentDto toDto(){
+        return CommentDto.builder()
+                .content(content)
+                .like(like)
+                .createDate(createDate)
+                .postId(post.getPostId())
+                .build();
     }
 }

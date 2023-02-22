@@ -1,5 +1,6 @@
 package com.example.waffleeungaebackend.entity;
 
+import com.example.waffleeungaebackend.dto.CategoryDto;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -23,4 +24,9 @@ public class Category {
     // 카테고리 이름
     private String categoryName;
 
+    public CategoryDto toDto() {
+        return CategoryDto.builder()
+                .categoryName(categoryName)
+                .build();
+    }
 }

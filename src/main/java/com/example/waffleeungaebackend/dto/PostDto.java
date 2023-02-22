@@ -1,44 +1,17 @@
 package com.example.waffleeungaebackend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Getter
+@AllArgsConstructor
+@Builder
 public class PostDto {
+    private Long id;
+    private String title;
+    private String content;
+    private LocalDateTime createDate;
+    private Long categoryId;
 
-    @Getter
-    @AllArgsConstructor
-    @ToString
-    public static class AddPost{
-        @NonNull
-        private String title;
-        private String content;
-        private CategoryDto category;
-        private Boolean status;
-    }
-    @Getter
-    @AllArgsConstructor
-    @ToString
-    public static class PatchPost{
-        @NonNull
-        private String title;
-        private String content;
-        private CategoryDto category;
-        private Boolean status;
-    }
-    @Getter
-    @AllArgsConstructor
-    @ToString
-    public static class ResponsePost{
-        private Long postId;
-        private String title;
-        private String content;
-        private LocalDateTime createDate;
-        private MemberDto member;
-        private CategoryDto category;
-        private Boolean status;
-    }
 }
