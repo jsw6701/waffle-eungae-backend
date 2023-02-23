@@ -5,11 +5,9 @@ import com.example.waffleeungaebackend.dto.request.PostRequestDto;
 import com.example.waffleeungaebackend.entity.Post;
 import com.example.waffleeungaebackend.repository.PostRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -34,8 +32,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostDto> findPostList(Sort sort) {
-        List<Post> postList = postRepository.findAll(sort);
-        return postList.stream().map(Post::toDto).collect(Collectors.toList());
+    public Page<PostDto> findPostList(Pageable pageable) {
+        return postRepository.findAll(pageable).map(Post::toDto);
     }
 }
