@@ -41,10 +41,11 @@ public class Post {
     private List<Comment> commentList = new ArrayList<>();
 
     @Builder
-    public Post(String title, String content, LocalDateTime createDate){
+    public Post(String title, String content, LocalDateTime createDate, Category category){
         this.title = title;
         this.content = content;
         this.createDate = createDate;
+        this.category = category;
     }
 
     public PostDto toDto() {

@@ -1,7 +1,7 @@
 package com.example.waffleeungaebackend.service;
 
 import com.example.waffleeungaebackend.dto.CategoryDto;
-import com.example.waffleeungaebackend.dto.request.CategoryRequestDto;
+import com.example.waffleeungaebackend.dto.request.CategoryCreateRequestDto;
 import com.example.waffleeungaebackend.entity.Category;
 import com.example.waffleeungaebackend.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
@@ -22,8 +22,8 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public void addCategoryList(CategoryRequestDto categoryRequestDto) {
-        categoryRepository.save(categoryRequestDto.toEntity());
+    public void addCategoryList(CategoryCreateRequestDto categoryCreateRequestDto) {
+        categoryRepository.save(categoryCreateRequestDto.toEntity());
     }
 
     @Override

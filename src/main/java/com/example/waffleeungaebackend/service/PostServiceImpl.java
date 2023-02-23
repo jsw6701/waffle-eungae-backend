@@ -1,7 +1,8 @@
 package com.example.waffleeungaebackend.service;
 
 import com.example.waffleeungaebackend.dto.PostDto;
-import com.example.waffleeungaebackend.dto.request.PostRequestDto;
+import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
+import com.example.waffleeungaebackend.entity.Category;
 import com.example.waffleeungaebackend.entity.Post;
 import com.example.waffleeungaebackend.repository.PostRepository;
 import lombok.AllArgsConstructor;
@@ -22,8 +23,8 @@ public class PostServiceImpl implements PostService{
 
 
     @Override
-    public void addPostList(PostRequestDto postRequestDto) {
-        postRepository.save(postRequestDto.toEntity());
+    public void addPostList(PostCreateRequestDto postCreateRequestDto, Category category) {
+        postRepository.save(postCreateRequestDto.toEntity(category));
     }
 
     @Override
