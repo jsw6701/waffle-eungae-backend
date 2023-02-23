@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Builder
 @AllArgsConstructor
-public class CategoryRequestDto {
+public class CategoryCreateRequestDto {
 
     @NotEmpty(message = "카테고리는 필수 항목입니다.")
     private String categoryName;
