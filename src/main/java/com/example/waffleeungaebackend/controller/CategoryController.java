@@ -35,7 +35,7 @@ public class CategoryController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<CategoryDto> update(@PathVariable("id") Long id, @RequestBody CategoryPatchRequestDto patchRequestDto){
+    public ResponseEntity<CategoryDto> update(@PathVariable Long id, @RequestBody CategoryPatchRequestDto patchRequestDto){
         System.out.println("update");
 
         Category result = categoryService.updateById(id, patchRequestDto);
@@ -43,7 +43,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id){
         System.out.println("delete");
 
         this.categoryService.deleteCategory(id);
