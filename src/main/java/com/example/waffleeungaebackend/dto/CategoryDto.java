@@ -1,11 +1,10 @@
 package com.example.waffleeungaebackend.dto;
 
-import lombok.AllArgsConstructor;
+import com.example.waffleeungaebackend.entity.Category;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 @Builder
 public class CategoryDto {
 
@@ -13,4 +12,8 @@ public class CategoryDto {
 
     private String categoryName;
 
+    public CategoryDto(Category category){
+        this.categoryId = category.getCategoryId();
+        this.categoryName = category.getCategoryName();
+    }
 }

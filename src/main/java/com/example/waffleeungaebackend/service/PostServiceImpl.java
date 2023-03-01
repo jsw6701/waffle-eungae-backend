@@ -2,8 +2,10 @@ package com.example.waffleeungaebackend.service;
 
 import com.example.waffleeungaebackend.dto.PostDto;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
+import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
 import com.example.waffleeungaebackend.entity.Category;
 import com.example.waffleeungaebackend.entity.Post;
+import com.example.waffleeungaebackend.repository.CategoryRepository;
 import com.example.waffleeungaebackend.repository.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +18,8 @@ public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
 
+    private final CategoryRepository categoryRepository;
+
     @Override
     public Post findById(Long id) {
         return postRepository.findById(id).orElse(new Post());
@@ -23,8 +27,20 @@ public class PostServiceImpl implements PostService{
 
 
     @Override
-    public void addPostList(PostCreateRequestDto postCreateRequestDto, Category category) {
-        postRepository.save(postCreateRequestDto.toEntity(category));
+    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId) {
+        Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
+        return postRepository.save(postCreateRequestDto.toEntity(category));
+    }
+
+    @Override
+    public Post updateById(Long id, PostPatchRequestDto postPatchRequestDto){
+        Post post = this.findById(id);
+        Category category = categoryRepository.findById(postPatchRequestDto.getCategoryId()).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
+
+        post.setCategory(category);
+        post.setContent(postPatchRequestDto.getContent());
+
+        return this.postRepository.save(post);
     }
 
     @Override
