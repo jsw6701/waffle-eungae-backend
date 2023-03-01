@@ -53,7 +53,7 @@ public class Post {
                 .title(title)
                 .content(content)
                 .createDate(LocalDateTime.now())
-                .categoryId(category.getCategoryId())
+                .category(category)
                 .build();
     }
 }

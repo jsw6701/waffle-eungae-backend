@@ -28,6 +28,13 @@ public class CategoryController {
     }
 
     @GetMapping
+    public ResponseEntity<String> findNameById(Long id){
+        System.out.println("find name");
+        Category category = this.categoryService.findById(id);
+        return ResponseEntity.ok(category.getCategoryName());
+    }
+
+    @GetMapping
     public ResponseEntity<List<CategoryDto>> readAll(){
         System.out.println("read all");
         List<CategoryDto> categoryList = this.categoryService.findAllCategory();
