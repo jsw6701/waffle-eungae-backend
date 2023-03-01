@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 public class PostDto {
-    private Long id;
+    private Long postId;
     private String title;
     private String content;
     private LocalDateTime createDate;
     private Category category;
 
     public PostDto(Post post){
-        this.id = post.getPostId();
+        this.postId = post.getPostId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.createDate = post.getCreateDate();
