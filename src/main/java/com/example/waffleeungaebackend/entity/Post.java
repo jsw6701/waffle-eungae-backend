@@ -33,7 +33,7 @@ public class Post {
     private Member member;*/
 
     @ManyToOne
-    @JoinColumn(name = "categoryId")
+    @JoinColumn
     // 카테고리 아이디
     private Category category;
 

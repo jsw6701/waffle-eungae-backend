@@ -2,7 +2,6 @@ package com.example.waffleeungaebackend.dto.request;
 
 import com.example.waffleeungaebackend.entity.Category;
 import com.example.waffleeungaebackend.entity.Post;
-import com.example.waffleeungaebackend.service.CategoryService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

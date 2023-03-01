@@ -27,7 +27,7 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryDto(result));
     }
 
-    @GetMapping
+    @GetMapping("/read")
     public ResponseEntity<String> findNameById(Long id){
         System.out.println("find name");
         Category category = this.categoryService.findById(id);
