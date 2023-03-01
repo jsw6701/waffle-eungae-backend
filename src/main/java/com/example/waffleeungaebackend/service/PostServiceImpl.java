@@ -35,4 +35,5 @@ public class PostServiceImpl implements PostService{
     public List<Post> findPostList(Sort sort) {
         return postRepository.findAll(sort);
     }
+
 }

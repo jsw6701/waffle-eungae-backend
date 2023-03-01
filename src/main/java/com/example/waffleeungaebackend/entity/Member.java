@@ -18,11 +18,12 @@ public class Member {
     private Long memberId;
 
     @Column
-    // 유저 이메일
-    private String email;
-    @Column
     // 유저 이름
     private String name;
+
+    @Column
+    // 유저 이메일
+    private String email;
 
     @Enumerated(EnumType.STRING)
     @Column
