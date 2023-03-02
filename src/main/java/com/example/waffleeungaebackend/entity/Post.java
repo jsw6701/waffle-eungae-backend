@@ -5,8 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Getter
@@ -37,11 +36,12 @@ public class Post {
     // 카테고리 아이디
     private Category category;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    private List<Comment> commentList = new ArrayList<>();
+/*    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<Comment> commentList = new ArrayList<>();*/
 
     @Builder
-    public Post(String title, String content, LocalDateTime createDate, Category category){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category){
+        this.postId = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
@@ -50,6 +50,7 @@ public class Post {
 
     public PostDto toDto() {
         return PostDto.builder()
+                .postId(postId)
                 .title(title)
                 .content(content)
                 .createDate(LocalDateTime.now())

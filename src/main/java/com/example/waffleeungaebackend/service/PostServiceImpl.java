@@ -20,6 +20,7 @@ public class PostServiceImpl implements PostService{
 
     private final CategoryRepository categoryRepository;
 
+
     @Override
     public Post findById(Long id) {
         return postRepository.findById(id).orElse(new Post());
@@ -50,6 +51,7 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Page<PostDto> findPostList(Pageable pageable) {
-        return postRepository.findAll(pageable).map(Post::toDto);
+        Page<Post> page = postRepository.findAll(pageable);
+        return page.map(Post::toDto);
     }
 }

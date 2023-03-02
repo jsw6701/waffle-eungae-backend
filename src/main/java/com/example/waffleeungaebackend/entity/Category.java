@@ -24,6 +24,7 @@ public class Category {
 
     public CategoryDto toDto() {
         return CategoryDto.builder()
+                .categoryId(categoryId)
                 .categoryName(categoryName)
                 .build();
     }
