@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/post")
 public class PostController {
 
-    private PostService postService;
+    private final PostService postService;
 
     @PostMapping("{categoryId}")
     public ResponseEntity<PostDto> create(@RequestBody PostCreateRequestDto postCreateRequestDto, @PathVariable Long categoryId){
@@ -46,7 +46,7 @@ public class PostController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PostDto>> readAll(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+    public ResponseEntity<Page<PostDto>> readAll(@PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable){
         System.out.println("read all");
 
         Page<PostDto> postList = this.postService.findPostList(pageable);

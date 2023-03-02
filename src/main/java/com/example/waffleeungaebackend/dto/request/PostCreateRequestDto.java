@@ -28,7 +28,7 @@ public class PostCreateRequestDto {
     public Post toEntity(Category category) {
 
         return Post.builder()
-                .id(id)
+                .postId(id)
                 .title(title)
                 .content(content)
                 .createDate(LocalDateTime.now())

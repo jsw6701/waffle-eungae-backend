@@ -40,8 +40,8 @@ public class Post {
     private List<Comment> commentList = new ArrayList<>();*/
 
     @Builder
-    public Post(Long id, String title, String content, LocalDateTime createDate, Category category){
-        this.postId = id;
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category){
+        this.postId = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
