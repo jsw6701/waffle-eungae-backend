@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -36,4 +37,10 @@ public class PostServiceImpl implements PostService{
         return postRepository.findAll(sort);
     }
 
+    @Override
+    public List<PostDto> findAllDesc() {
+        return postRepository.findAllDesc().stream()
+            .map(PostDto::new)
+            .collect(Collectors.toList());
+    }
 }

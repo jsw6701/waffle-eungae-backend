@@ -13,5 +13,9 @@ public interface PostService {
 
     void deletePostList(Long id);
 
-    List<Post> findPostList(Sort sort);
+    Post updateById(Long id, PostPatchRequestDto postPatchRequestDto);
+
+    Page<PostDto> findPostList(Pageable pageable);
+
+    List<PostDto> findAllDesc();
 }
