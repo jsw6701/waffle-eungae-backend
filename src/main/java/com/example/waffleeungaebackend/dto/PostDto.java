@@ -17,7 +17,7 @@ public class PostDto {
     private Category category;
 
     public PostDto(Post post){
-        this.postId = post.getPostId();
+        this.postId = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.createDate = post.getCreateDate();

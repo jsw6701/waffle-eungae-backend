@@ -12,14 +12,14 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class CategoryCreateRequestDto {
 
-    private Long id;
+    private Long categoryId;
 
     @NotEmpty(message = "카테고리는 필수 항목입니다.")
     private String categoryName;
 
     public Category toEntity(){
         return Category.builder()
-                .categoryId(id)
+                .categoryId(categoryId)
                 .categoryName(categoryName)
                 .build();
     }

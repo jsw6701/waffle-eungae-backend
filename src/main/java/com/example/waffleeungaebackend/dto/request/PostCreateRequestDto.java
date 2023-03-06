@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PostCreateRequestDto {
 
-    private Long id;
+    private Long postId;
 
     @NotEmpty(message="제목은 필수 항목입니다.")
     @Size(max=200)
@@ -28,7 +28,7 @@ public class PostCreateRequestDto {
     public Post toEntity(Category category) {
 
         return Post.builder()
-                .postId(id)
+                .postId(postId)
                 .title(title)
                 .content(content)
                 .createDate(LocalDateTime.now())

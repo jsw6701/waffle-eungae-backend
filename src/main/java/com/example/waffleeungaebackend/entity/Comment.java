@@ -21,7 +21,7 @@ public class Comment {
     private String content;
 
     // 좋아요
-    private Integer likes;
+    //private Integer likes;
 
     // 작성일
     private LocalDateTime createDate;
@@ -32,21 +32,21 @@ public class Comment {
     private Member member;*/
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "post_id")
     // 게시글 아이디
     private Post post;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn
     // 부모 댓글
-    private Comment comment;
+    private Comment comment;*/
 
     public CommentDto toDto(){
         return CommentDto.builder()
                 .content(content)
-                .like(likes)
+                //.like(likes)
                 .createDate(createDate)
-                .postId(post.getPostId())
+                .postId(post.getId())
                 .build();
     }
 }
