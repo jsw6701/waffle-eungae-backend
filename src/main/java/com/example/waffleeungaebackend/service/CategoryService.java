@@ -1,8 +1,9 @@
 package com.example.waffleeungaebackend.service;
 
+import com.example.waffleeungaebackend.dto.CategoryDto;
+import com.example.waffleeungaebackend.dto.request.CategoryCreateRequestDto;
+import com.example.waffleeungaebackend.dto.request.CategoryPatchRequestDto;
 import com.example.waffleeungaebackend.entity.Category;
-import com.example.waffleeungaebackend.entity.Post;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -10,9 +11,11 @@ public interface CategoryService {
 
     Category findById(Long id);
 
-    void addCategoryList(Category category);
+    Category addCategory(CategoryCreateRequestDto categoryCreateRequestDto);
 
-    void deleteCategoryList(Long id);
+    Category updateById(Long id, CategoryPatchRequestDto categoryPatchRequestDto);
 
-    List<Category> findCategoryList(Sort sort);
+    void deleteCategory(Long id);
+
+    List<CategoryDto> findAllCategory();
 }

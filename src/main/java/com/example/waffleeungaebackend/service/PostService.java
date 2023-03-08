@@ -1,15 +1,17 @@
 package com.example.waffleeungaebackend.service;
 
+import com.example.waffleeungaebackend.dto.PostDto;
+import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
+import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
 import com.example.waffleeungaebackend.entity.Post;
-import org.springframework.data.domain.Sort;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface PostService {
 
     Post findById(Long id);
 
-    void addPostList(Post post);
+    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId);
 
     void deletePostList(Long id);
 
@@ -17,5 +19,7 @@ public interface PostService {
 
     Page<PostDto> findPostList(Pageable pageable);
 
+
     List<PostDto> findAllDesc();
+
 }
