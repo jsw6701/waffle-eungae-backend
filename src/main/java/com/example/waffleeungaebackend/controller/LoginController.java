@@ -14,7 +14,7 @@ public class LoginController {
 
     private final PostService postsService;
 
-    @GetMapping("/logintest")
+    @GetMapping("/login")
     public String index(Model model, @LoginUser SessionMember member) {
         Pageable Pageable;
         model.addAttribute("posts", postsService.findAllDesc());

@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 
 public interface PostRepository extends JpaRepository<Post, Long> {
-    @Query("SELECT p FROM Post p ORDER BY p.postId DESC")
+    @Query("SELECT p FROM Post p ORDER BY p.id DESC")
     List<Post> findAllDesc();
 
 
