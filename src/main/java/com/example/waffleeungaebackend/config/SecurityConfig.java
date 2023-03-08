@@ -26,7 +26,7 @@ public class SecurityConfig  {
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/","/css/**","/js/**","h2-console/**","/profile").permitAll()
                         .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                        .anyRequest().authenticated())
+                        )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")) //logout 요청시 홈으로 이동 - 기본 logout url = "/logout"
                 .oauth2Login(oauth2Login -> oauth2Login //OAuth2 로그인 설정 시작점
