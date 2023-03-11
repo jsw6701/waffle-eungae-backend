@@ -41,13 +41,18 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> commentList = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn
+    private Member member;
+
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member){
         this.id = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
         this.category = category;
+        this.member = member;
     }
 
     public PostDto toDto() {
@@ -57,6 +62,7 @@ public class Post {
                 .content(content)
                 .createDate(LocalDateTime.now())
                 .category(category)
+                .member(member)
                 .build();
     }
 }

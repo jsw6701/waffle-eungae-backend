@@ -1,8 +1,10 @@
 package com.example.waffleeungaebackend.controller;
 
 import com.example.waffleeungaebackend.dto.PostDto;
+import com.example.waffleeungaebackend.dto.SessionMember;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
 import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
+import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import com.example.waffleeungaebackend.service.PostService;
 import lombok.AllArgsConstructor;
@@ -11,7 +13,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.client.web.server.AuthenticatedPrincipalServerOAuth2AuthorizedClientRepository;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @CrossOrigin
 @AllArgsConstructor
@@ -22,10 +29,10 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("{categoryId}")
-    public ResponseEntity<PostDto> create(@RequestBody PostCreateRequestDto postCreateRequestDto, @PathVariable Long categoryId){
+    public ResponseEntity<PostDto> create(@RequestBody PostCreateRequestDto postCreateRequestDto, @PathVariable Long categoryId, @LoginUser  SessionMember member){
         System.out.println("create");
 
-        Post post = this.postService.addPostList(postCreateRequestDto, categoryId);
+        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getName());
         return ResponseEntity.ok(new PostDto(post));
     }
 
