@@ -2,7 +2,7 @@ package com.example.waffleeungaebackend.config;
 
 
 import com.example.waffleeungaebackend.entity.Role;
-import com.example.waffleeungaebackend.service.CustomOAuth2MemberService;
+import com.example.waffleeungaebackend.config.login.CustomOAuth2MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

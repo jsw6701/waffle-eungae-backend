@@ -1,4 +1,4 @@
-package com.example.waffleeungaebackend.dto;
+package com.example.waffleeungaebackend.config.login;
 
 import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Role;

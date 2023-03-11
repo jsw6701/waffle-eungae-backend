@@ -1,4 +1,4 @@
-package com.example.waffleeungaebackend.controller;
+package com.example.waffleeungaebackend.config.login;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

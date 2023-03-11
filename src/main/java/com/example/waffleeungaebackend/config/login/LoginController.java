@@ -1,6 +1,6 @@
-package com.example.waffleeungaebackend.controller;
+package com.example.waffleeungaebackend.config.login;
 
-import com.example.waffleeungaebackend.dto.SessionMember;
+import com.example.waffleeungaebackend.dto.MemberDto;
 import com.example.waffleeungaebackend.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +15,7 @@ public class LoginController {
     private final PostService postsService;
 
     @GetMapping("/login")
-    public String index(Model model, @LoginUser SessionMember member) {
+    public String index(Model model, @LoginUser MemberDto member) {
         Pageable Pageable;
         model.addAttribute("posts", postsService.findAllDesc());
         if (member != null) {

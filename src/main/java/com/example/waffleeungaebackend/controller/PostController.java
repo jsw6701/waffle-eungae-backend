@@ -1,10 +1,10 @@
 package com.example.waffleeungaebackend.controller;
 
+import com.example.waffleeungaebackend.config.login.LoginUser;
 import com.example.waffleeungaebackend.dto.PostDto;
-import com.example.waffleeungaebackend.dto.SessionMember;
+import com.example.waffleeungaebackend.dto.MemberDto;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
 import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
-import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import com.example.waffleeungaebackend.service.PostService;
 import lombok.AllArgsConstructor;
@@ -13,12 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.client.web.server.AuthenticatedPrincipalServerOAuth2AuthorizedClientRepository;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 @CrossOrigin
 @AllArgsConstructor
@@ -29,26 +24,26 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("{categoryId}")
-    public ResponseEntity<PostDto> create(@RequestBody PostCreateRequestDto postCreateRequestDto, @PathVariable Long categoryId, @LoginUser  SessionMember member){
+    public ResponseEntity<PostDto> create(@RequestBody PostCreateRequestDto postCreateRequestDto, @PathVariable Long categoryId, @LoginUser MemberDto member){
         System.out.println("create");
 
-        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getName());
+        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId());
         return ResponseEntity.ok(new PostDto(post));
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<PostDto> update(@PathVariable Long id, @RequestBody PostPatchRequestDto patchRequestDto){
+    public ResponseEntity<PostDto> update(@PathVariable Long id, @RequestBody PostPatchRequestDto patchRequestDto, @LoginUser MemberDto member){
         System.out.println("update");
 
-        Post post = postService.updateById(id, patchRequestDto);
+        Post post = postService.updateById(id, patchRequestDto, member.getMemberId());
         return ResponseEntity.ok(new PostDto(post));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id, @LoginUser MemberDto member){
         System.out.println("delete");
 
-        this.postService.deletePostList(id);
+        this.postService.deletePostList(id, member.getMemberId());
         return ResponseEntity.ok().build();
     }
 
