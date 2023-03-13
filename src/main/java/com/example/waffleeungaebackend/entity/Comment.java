@@ -36,6 +36,10 @@ public class Comment {
     // 게시글 아이디
     private Post post;
 
+    @ManyToOne
+    @JoinColumn
+    private Member member;
+
 /*    @ManyToOne
     @JoinColumn
     // 부모 댓글
@@ -47,6 +51,7 @@ public class Comment {
                 //.like(likes)
                 .createDate(createDate)
                 .postId(post.getId())
+                .member(member)
                 .build();
     }
 }

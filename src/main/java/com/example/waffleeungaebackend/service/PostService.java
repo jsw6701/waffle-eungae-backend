@@ -24,4 +24,5 @@ public interface PostService {
 
     List<PostDto> findAllDesc();
 
+
 }

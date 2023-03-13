@@ -16,4 +16,8 @@ public class MemberDto implements Serializable {
         this.name = member.getName();
         this.email = member.getEmail();
     }
+
+    public Member getId() {
+        return Member.builder().memberId(memberId).build();
+    }
 }
