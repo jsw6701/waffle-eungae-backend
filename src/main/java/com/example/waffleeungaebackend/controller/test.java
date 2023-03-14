@@ -1,13 +1,17 @@
 package com.example.waffleeungaebackend.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Slf4j
 public class test {
 
-    @PostMapping("/test")
-    public String test(){
+    @RequestMapping("/test")
+    public String test() {
+        log.info("test");
         return "<h1> test oooo</h1>";
     }
+
 }
