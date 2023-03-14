@@ -17,12 +17,11 @@ public class LoginController {
 
     @GetMapping("/testlogin")
     public String index(Model model, @LoginUser SessionMember member) {
-        Pageable Pageable;
         model.addAttribute("posts", postsService.findAllDesc());
         if (member != null) {
             model.addAttribute("userName", member.getName());
         }
-        return "index";
+        return "test";
     }
 
 
