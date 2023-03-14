@@ -13,10 +13,12 @@ public class OAuthAttributes {
     private String nameAttributeKey;
     private String name;
     private String email;
+    private Role role;
 
 
     @Builder
-    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email ) {
+
+    public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.name = name;

@@ -6,14 +6,12 @@ import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
 
-@Entity
-@Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
-@Setter
-@ToString
-public class Member {
+@Entity
+public class Member extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 유저 아이디
@@ -31,6 +29,9 @@ public class Member {
     @Column
     private Role role;
 
+
+
+    /*
     @Builder
     public Member(String name, String email, Role role) {
 
@@ -39,10 +40,13 @@ public class Member {
         this.role = role;
     }
 
+
+ */
     public Member update(String name ) {
         this.name = name;
         return this;
     }
+
 
     public String getRoleKey() {
         return this.role.getKey();
