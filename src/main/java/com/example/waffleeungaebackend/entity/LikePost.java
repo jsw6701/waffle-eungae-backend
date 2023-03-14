@@ -4,13 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
-@Builder
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
+@Builder
+@Entity
 public class LikePost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +17,12 @@ public class LikePost {
     private Long likePostId;
 
     @ManyToOne
-    @JoinColumn(name = "postId")
+    @JoinColumn(name = "post_id")
     // 게시글 아이디
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "memberId")
+    @JoinColumn(name = "member_Id")
     // 유저 아이디
     private Member member;
 

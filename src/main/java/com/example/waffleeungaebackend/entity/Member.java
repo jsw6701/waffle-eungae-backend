@@ -1,6 +1,8 @@
 package com.example.waffleeungaebackend.entity;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
 
@@ -31,6 +33,7 @@ public class Member {
 
     @Builder
     public Member(String name, String email, Role role) {
+
         this.name = name;
         this.email = email;
         this.role = role;

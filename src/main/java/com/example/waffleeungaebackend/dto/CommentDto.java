@@ -1,5 +1,6 @@
 package com.example.waffleeungaebackend.dto;
 
+import com.example.waffleeungaebackend.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,6 +21,8 @@ public class CommentDto {
     private LocalDateTime createDate;
 
     private Long postId;
+
+    private Member member;
 
 
 
