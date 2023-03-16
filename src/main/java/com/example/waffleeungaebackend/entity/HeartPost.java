@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
-public class LikePost {
+public class HeartPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 좋아요 아이디

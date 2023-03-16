@@ -52,18 +52,18 @@ public class Post {
 
     @ManyToOne
     @JoinColumn
-    private LikePost likePost;
+    private HeartPost heartPost;
 
 
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, LikePost likePost){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, HeartPost heartPost){
         this.id = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
         this.category = category;
         this.member = member;
-        this.likePost = likePost;
+        this.heartPost = heartPost;
     }
 
     public PostDto toDto() {
@@ -74,7 +74,7 @@ public class Post {
                 .createDate(LocalDateTime.now())
                 .category(category)
                 .member(member)
-                .likePost(likePost)
+                .heartPost(heartPost)
                 .build();
     }
 }

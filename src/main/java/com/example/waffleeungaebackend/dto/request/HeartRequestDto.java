@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class LikeRequestDto {
+public class HeartRequestDto {
 
     private Long memberId;
     private Long boardId;
 
-    public LikeRequestDto(Long memberId, Long boardId) {
+    public HeartRequestDto(Long memberId, Long boardId) {
         this.memberId = memberId;
         this.boardId = boardId;
     }

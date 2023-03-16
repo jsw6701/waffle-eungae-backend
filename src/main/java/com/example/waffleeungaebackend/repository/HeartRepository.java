@@ -1,14 +1,12 @@
 package com.example.waffleeungaebackend.repository;
 
-import com.example.waffleeungaebackend.entity.LikePost;
-import com.example.waffleeungaebackend.entity.Member;
-import com.example.waffleeungaebackend.entity.Post;
+import com.example.waffleeungaebackend.entity.HeartPost;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 
-public interface LikeRepository extends JpaRepository<LikePost, Integer> {
+public interface HeartRepository extends JpaRepository<HeartPost, Integer> {
 
     @Modifying
     @Query(value = "INSERT INTO like_post(post_id, member_Id) VALUES(?1, ?2)", nativeQuery = true)
