@@ -1,6 +1,5 @@
 package com.example.waffleeungaebackend.service;
 
-import com.example.waffleeungaebackend.dto.MemberDto;
 import com.example.waffleeungaebackend.dto.PostDto;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
 import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
@@ -14,7 +13,7 @@ public interface PostService {
 
     Post findById(Long id);
 
-    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId);
+    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, Long fileId);
 
     void deletePostList(Long id, Long MemberId);
 

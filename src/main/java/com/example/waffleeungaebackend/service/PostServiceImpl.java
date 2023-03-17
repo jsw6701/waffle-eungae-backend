@@ -1,6 +1,5 @@
 package com.example.waffleeungaebackend.service;
 
-import com.example.waffleeungaebackend.dto.MemberDto;
 import com.example.waffleeungaebackend.dto.PostDto;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
 import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
@@ -39,9 +38,10 @@ public class PostServiceImpl implements PostService{
 
 
     @Override
-    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long  memberId) {
+    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, Long fileId) {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("유저정보가 없습니다."));
         postCreateRequestDto.setMember(member);
+        postCreateRequestDto.setFileId(fileId);
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
         return postRepository.save(postCreateRequestDto.toEntity(category));
     }
@@ -84,6 +84,4 @@ public class PostServiceImpl implements PostService{
             .map(PostDto::new)
             .collect(Collectors.toList());
     }
-
-
 }
