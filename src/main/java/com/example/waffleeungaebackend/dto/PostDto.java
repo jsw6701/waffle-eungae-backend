@@ -1,7 +1,7 @@
 package com.example.waffleeungaebackend.dto;
 
 import com.example.waffleeungaebackend.entity.Category;
-import com.example.waffleeungaebackend.entity.LikePost;
+import com.example.waffleeungaebackend.entity.HeartPost;
 import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import lombok.*;
@@ -19,7 +19,7 @@ public class PostDto {
     private Long fileId;
     private Category category;
     private Member member;
-    private LikePost likePost;
+    private HeartPost heartPost;
 
     public PostDto(Post post){
         this.postId = post.getId();
@@ -29,6 +29,6 @@ public class PostDto {
         this.fileId = post.getFileId();
         this.category = post.getCategory();
         this.member = post.getMember();
-        this.likePost = post.getLikePost();
+        this.heartPost = post.getHeartPost();
     }
 }
