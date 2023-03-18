@@ -3,6 +3,7 @@ package com.example.waffleeungaebackend.entity;
 import com.example.waffleeungaebackend.dto.PostDto;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +30,9 @@ public class Post {
 
     // 작성일
     private LocalDateTime createDate;
+
+    @Column
+    private Long fileId;
 
     @ColumnDefault("0")
     @Column(nullable = false)
@@ -56,11 +61,12 @@ public class Post {
 
 
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, HeartPost heartPost){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Long fileId, Category category, Member member, HeartPost heartPost){
         this.id = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
+        this.fileId = fileId;
         this.category = category;
         this.member = member;
         this.heartPost = heartPost;

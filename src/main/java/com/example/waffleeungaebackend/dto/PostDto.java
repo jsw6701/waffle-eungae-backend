@@ -16,6 +16,7 @@ public class PostDto {
     private String title;
     private String content;
     private LocalDateTime createDate;
+    private Long fileId;
     private Category category;
     private Member member;
     private HeartPost heartPost;
@@ -25,6 +26,7 @@ public class PostDto {
         this.title = post.getTitle();
         this.content = post.getContent();
         this.createDate = post.getCreateDate();
+        this.fileId = post.getFileId();
         this.category = post.getCategory();
         this.member = post.getMember();
         this.heartPost = post.getHeartPost();
