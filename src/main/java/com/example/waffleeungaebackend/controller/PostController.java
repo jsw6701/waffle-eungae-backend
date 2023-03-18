@@ -22,7 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 @CrossOrigin
@@ -69,11 +68,7 @@ public class PostController {
 
             Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), fileId);
             return ResponseEntity.ok(new PostDto(post));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (NoSuchAlgorithmException | IOException e) {
             throw new RuntimeException(e);
         }
 
