@@ -27,8 +27,6 @@ public class PostCreateRequestDto {
     @NotEmpty(message="내용은 필수 항목입니다.")
     private String content;
 
-    private Long fileId;
-
     private Member member;
 
     public Post toEntity(Category category) {
@@ -38,7 +36,6 @@ public class PostCreateRequestDto {
                 .title(title)
                 .content(content)
                 .createDate(LocalDateTime.now())
-                .fileId(fileId)
                 .category(category)
                 .member(member)
                 .build();
