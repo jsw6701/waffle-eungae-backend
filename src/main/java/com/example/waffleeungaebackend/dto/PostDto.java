@@ -18,6 +18,8 @@ public class PostDto {
     private LocalDateTime createDate;
     private Category category;
     private Member member;
+    private String fileName;
+    private String filePath;
     private HeartPost heartPost;
 
     public PostDto(Post post){
@@ -27,6 +29,8 @@ public class PostDto {
         this.createDate = post.getCreateDate();
         this.category = post.getCategory();
         this.member = post.getMember();
+        this.fileName = post.getFileName();
+        this.filePath = post.getFilePath();
         this.heartPost = post.getHeartPost();
     }
 }

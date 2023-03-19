@@ -12,8 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 @CrossOrigin
@@ -24,19 +26,22 @@ public class PostController {
 
     private final PostService postService;
 
-    @PostMapping("{categoryId}")
+    @PostMapping(value = "{categoryId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<PostDto> create(
-            @RequestBody PostCreateRequestDto postCreateRequestDto,
+            @ModelAttribute PostCreateRequestDto postCreateRequestDto,
             @PathVariable Long categoryId,
-            @LoginUser MemberDto member){
+            @ApiIgnore @LoginUser MemberDto member) throws Exception{
         System.out.println("create");
 
-        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId());
+        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), postCreateRequestDto.getFile());
         return ResponseEntity.ok(new PostDto(post));
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<PostDto> update(@PathVariable Long id, @RequestBody PostPatchRequestDto patchRequestDto, @LoginUser MemberDto member){
+    public ResponseEntity<PostDto> update(
+            @PathVariable Long id,
+            @RequestBody PostPatchRequestDto patchRequestDto,
+            @LoginUser MemberDto member){
         System.out.println("update");
 
         Post post = postService.updateById(id, patchRequestDto, member.getMemberId());
@@ -61,7 +66,9 @@ public class PostController {
     }
 
     @GetMapping("{categoryId}")
-    public ResponseEntity<Page<PostDto>> readPostsByCategory(@PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable, @PathVariable Long categoryId){
+    public ResponseEntity<Page<PostDto>> readPostsByCategory(
+            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
+            @PathVariable Long categoryId){
         System.out.println("Posts by category");
 
         Page<PostDto> postsByCategoryList = this.postService.findByCategoryId(categoryId, pageable);

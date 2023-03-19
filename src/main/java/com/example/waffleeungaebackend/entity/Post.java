@@ -2,7 +2,6 @@ package com.example.waffleeungaebackend.entity;
 
 import com.example.waffleeungaebackend.dto.PostDto;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -34,6 +33,9 @@ public class Post {
 /*    @ColumnDefault("0")
     @Column(nullable = false)
     private Integer viewCount;*/
+    private String fileName;
+
+    private String filePath;
 
     @ManyToOne
     @JoinColumn
@@ -53,13 +55,15 @@ public class Post {
 
 
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, HeartPost heartPost){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, String fileName, String filePath, HeartPost heartPost){
         this.id = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
         this.category = category;
         this.member = member;
+        this.fileName = fileName;
+        this.filePath = filePath;
         this.heartPost = heartPost;
     }
 
@@ -71,6 +75,8 @@ public class Post {
                 .createDate(LocalDateTime.now())
                 .category(category)
                 .member(member)
+                .fileName(fileName)
+                .filePath(filePath)
                 .heartPost(heartPost)
                 .build();
     }

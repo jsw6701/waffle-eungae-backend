@@ -13,10 +13,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -38,9 +42,21 @@ public class PostServiceImpl implements PostService{
 
 
     @Override
-    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId) {
+    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, MultipartFile file) throws IOException {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("유저정보가 없습니다."));
-        postCreateRequestDto.setMember(member);
+
+        String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+
+        UUID uuid = UUID.randomUUID();
+
+        String fileName = uuid + "_" + file.getOriginalFilename();
+
+        File saveFile = new File(projectPath, fileName);
+
+        file.transferTo(saveFile);
+
+        postCreateRequestDto.setFileName(fileName);
+        postCreateRequestDto.setFilePath("/files/" + fileName);
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
         return postRepository.save(postCreateRequestDto.toEntity(category));
     }
