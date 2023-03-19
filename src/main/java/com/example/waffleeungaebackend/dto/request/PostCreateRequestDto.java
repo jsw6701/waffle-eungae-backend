@@ -49,7 +49,4 @@ public class PostCreateRequestDto {
                 .filePath(filePath)
                 .build();
     }
- /*   public void setMember(Member member){
-        this.member = member;
-    }*/
 }
