@@ -1,13 +1,11 @@
 package com.example.waffleeungaebackend.controller;
 
 import com.example.waffleeungaebackend.config.login.LoginUser;
-import com.example.waffleeungaebackend.dto.PostDto;
 import com.example.waffleeungaebackend.dto.MemberDto;
+import com.example.waffleeungaebackend.dto.PostDto;
 import com.example.waffleeungaebackend.dto.request.PostCreateRequestDto;
 import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
-
 import com.example.waffleeungaebackend.entity.Post;
-import com.example.waffleeungaebackend.service.FileService;
 import com.example.waffleeungaebackend.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -69,5 +67,10 @@ public class PostController {
         Page<PostDto> postsByCategoryList = this.postService.findByCategoryId(categoryId, pageable);
 
         return ResponseEntity.ok(postsByCategoryList);
+    }
+    //상세페이지
+    @GetMapping("{id}")
+    public Post detail(@PathVariable Long id){
+        return postService.showDetailPost(id);
     }
 }

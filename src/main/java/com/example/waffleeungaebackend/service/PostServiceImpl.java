@@ -90,4 +90,9 @@ public class PostServiceImpl implements PostService{
         Page<Post> page = postRepository.findByCategory(category, pageable);
         return page.map(Post::toDto);
     }
+
+    @Override
+    public Post showDetailPost(Long id){
+        return postRepository.findById(id).orElse(null);
+    }
 }

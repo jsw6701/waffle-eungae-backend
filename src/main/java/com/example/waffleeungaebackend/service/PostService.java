@@ -25,4 +25,7 @@ public interface PostService {
 
 
     Page<PostDto> findByCategoryId(Long categoryId, Pageable pageable);
+
+    Post showDetailPost(Long id);
+
 }
