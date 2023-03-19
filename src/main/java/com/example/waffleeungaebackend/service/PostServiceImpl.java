@@ -38,10 +38,9 @@ public class PostServiceImpl implements PostService{
 
 
     @Override
-    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, Long fileId) {
+    public Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("유저정보가 없습니다."));
         postCreateRequestDto.setMember(member);
-        postCreateRequestDto.setFileId(fileId);
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
         return postRepository.save(postCreateRequestDto.toEntity(category));
     }
@@ -83,5 +82,12 @@ public class PostServiceImpl implements PostService{
         return postRepository.findAllDesc().stream()
             .map(PostDto::new)
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<PostDto> findByCategoryId(Long categoryId, Pageable pageable){
+        Category category = this.categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("카테고리가 없습니다."));
+        Page<Post> page = postRepository.findByCategory(category, pageable);
+        return page.map(Post::toDto);
     }
 }

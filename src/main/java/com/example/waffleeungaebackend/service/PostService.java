@@ -13,7 +13,7 @@ public interface PostService {
 
     Post findById(Long id);
 
-    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, Long fileId);
+    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId);
 
     void deletePostList(Long id, Long MemberId);
 
@@ -24,4 +24,5 @@ public interface PostService {
     List<PostDto> findAllDesc();
 
 
+    Page<PostDto> findByCategoryId(Long categoryId, Pageable pageable);
 }
