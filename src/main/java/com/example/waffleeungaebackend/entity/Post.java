@@ -31,14 +31,9 @@ public class Post {
     // 작성일
     private LocalDateTime createDate;
 
-    @ColumnDefault("0")
+/*    @ColumnDefault("0")
     @Column(nullable = false)
-    private Integer viewCount;
-
-/*    @ManyToOne
-    @JoinColumn(name = "memberId")
-    // 작성자 아이디
-    private Member member;*/
+    private Integer viewCount;*/
 
     @ManyToOne
     @JoinColumn
