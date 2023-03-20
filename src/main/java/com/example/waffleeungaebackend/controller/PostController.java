@@ -76,8 +76,9 @@ public class PostController {
         return ResponseEntity.ok(postsByCategoryList);
     }
     //상세페이지
-    @GetMapping("{id}")
-    public Post detail(@PathVariable Long id){
-        return postService.showDetailPost(id);
+    @GetMapping("detail/{id}")
+    public ResponseEntity<PostDto> getPostById(@PathVariable Long id){
+        Post post = postService.showDetailPost(id);
+        return ResponseEntity.ok(new PostDto(post));
     }
 }

@@ -38,6 +38,9 @@ public class PostCreateRequestDto {
     @Nullable
     private String filePath;
 
+    @Nullable
+    private Long viewCount;
+
     public Post toEntity(Category category) {
 
         return Post.builder()
@@ -47,6 +50,7 @@ public class PostCreateRequestDto {
                 .category(category)
                 .fileName(fileName)
                 .filePath(filePath)
+                .viewCount(viewCount)
                 .build();
     }
 }

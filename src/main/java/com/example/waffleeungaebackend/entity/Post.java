@@ -30,9 +30,8 @@ public class Post {
     // 작성일
     private LocalDateTime createDate;
 
-/*    @ColumnDefault("0")
-    @Column(nullable = false)
-    private Integer viewCount;*/
+    private Long viewCount = 0L;
+
     private String fileName;
 
     private String filePath;
@@ -55,13 +54,14 @@ public class Post {
 
 
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, String fileName, String filePath, HeartPost heartPost){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, Long viewCount, String fileName, String filePath, HeartPost heartPost){
         this.id = postId;
         this.title = title;
         this.content = content;
         this.createDate = createDate;
         this.category = category;
         this.member = member;
+        this.viewCount = viewCount;
         this.fileName = fileName;
         this.filePath = filePath;
         this.heartPost = heartPost;
@@ -78,6 +78,7 @@ public class Post {
                 .fileName(fileName)
                 .filePath(filePath)
                 .heartPost(heartPost)
+                .viewCount(viewCount)
                 .build();
     }
 }

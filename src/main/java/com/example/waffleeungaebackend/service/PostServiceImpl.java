@@ -109,6 +109,12 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public Post showDetailPost(Long id){
+
+        Post post = this.findById(id);
+
+        post.setViewCount(post.getViewCount() + 1);
+
+        this.postRepository.save(post);
         return postRepository.findById(id).orElse(null);
     }
 }

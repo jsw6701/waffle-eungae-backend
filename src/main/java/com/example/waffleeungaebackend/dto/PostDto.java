@@ -18,6 +18,7 @@ public class PostDto {
     private LocalDateTime createDate;
     private Category category;
     private Member member;
+    private Long viewCount;
     private String fileName;
     private String filePath;
     private HeartPost heartPost;
@@ -28,6 +29,7 @@ public class PostDto {
         this.content = post.getContent();
         this.createDate = post.getCreateDate();
         this.category = post.getCategory();
+        this.viewCount = post.getViewCount();
         this.member = post.getMember();
         this.fileName = post.getFileName();
         this.filePath = post.getFilePath();
