@@ -28,6 +28,8 @@ public interface PostService {
 
     Page<PostDto> findByCategoryId(Long categoryId, Pageable pageable);
 
+    Page<PostDto> findByMemberId(Long memberId, Pageable pageable);
+
     Post showDetailPost(Long id);
 
 }

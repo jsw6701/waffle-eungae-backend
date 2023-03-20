@@ -1,6 +1,7 @@
 package com.example.waffleeungaebackend.repository;
 
 import com.example.waffleeungaebackend.entity.Category;
+import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,4 +16,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findAllDesc();
 
     Page<Post> findByCategory(Category category, Pageable pageable);
+
+    Page<Post> findByMember(Member member, Pageable pageable);
 }

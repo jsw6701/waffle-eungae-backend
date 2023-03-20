@@ -58,7 +58,7 @@ public class PostServiceImpl implements PostService{
         postCreateRequestDto.setFileName(fileName);
         postCreateRequestDto.setFilePath("/files/" + fileName);
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
-        return postRepository.save(postCreateRequestDto.toEntity(category));
+        return postRepository.save(postCreateRequestDto.toEntity(category, member));
     }
 
     @Override
@@ -104,6 +104,13 @@ public class PostServiceImpl implements PostService{
     public Page<PostDto> findByCategoryId(Long categoryId, Pageable pageable){
         Category category = this.categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("카테고리가 없습니다."));
         Page<Post> page = postRepository.findByCategory(category, pageable);
+        return page.map(Post::toDto);
+    }
+
+    @Override
+    public Page<PostDto> findByMemberId(Long memberId, Pageable pageable){
+        Member member = this.memberRepository.findById(memberId).orElseThrow(() -> new IllegalArgumentException("카테고리가 없습니다."));
+        Page<Post> page = postRepository.findByMember(member, pageable);
         return page.map(Post::toDto);
     }
 
