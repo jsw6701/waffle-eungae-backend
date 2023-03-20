@@ -23,7 +23,6 @@ public class SecurityConfig  {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
         http
-                .httpBasic().disable()
                 .cors().configurationSource(corsConfigurationSource()) //스프링 시큐리티 Cors
                 .and()
                 .csrf().disable()//csrf 공격을 막아주는 옵션을 disalbe, rest api같은 경우에는 브라우저를 통해 request 받지 않기 때문에 해당 옵션을 꺼도 됩니다.
