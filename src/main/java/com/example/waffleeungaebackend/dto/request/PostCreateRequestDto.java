@@ -1,6 +1,7 @@
 package com.example.waffleeungaebackend.dto.request;
 
 import com.example.waffleeungaebackend.entity.Category;
+import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -41,7 +42,8 @@ public class PostCreateRequestDto {
     @Nullable
     private Long viewCount;
 
-    public Post toEntity(Category category) {
+
+    public Post toEntity(Category category, Member member) {
 
         return Post.builder()
                 .title(title)
@@ -51,6 +53,7 @@ public class PostCreateRequestDto {
                 .fileName(fileName)
                 .filePath(filePath)
                 .viewCount(viewCount)
+                .member(member)
                 .build();
     }
 }

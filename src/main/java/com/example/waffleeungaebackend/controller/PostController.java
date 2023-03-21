@@ -33,6 +33,8 @@ public class PostController {
             @ApiIgnore @LoginUser MemberDto member) throws Exception{
         System.out.println("create");
 
+        System.out.println(member.getMemberId());
+
         Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), postCreateRequestDto.getFile());
         return ResponseEntity.ok(new PostDto(post));
     }
@@ -65,7 +67,7 @@ public class PostController {
         return ResponseEntity.ok(postList);
     }
 
-    @GetMapping("{categoryId}")
+    @GetMapping("categoryPost/{categoryId}")
     public ResponseEntity<Page<PostDto>> readPostsByCategory(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
             @PathVariable Long categoryId){
@@ -75,6 +77,18 @@ public class PostController {
 
         return ResponseEntity.ok(postsByCategoryList);
     }
+
+    @GetMapping("memberPost/{memberId}")
+    public ResponseEntity<Page<PostDto>> readPostsByMember(
+            @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
+            @PathVariable Long memberId){
+        System.out.println("Posts by member");
+
+        Page<PostDto> postsByMemberList = this.postService.findByMemberId(memberId, pageable);
+
+        return ResponseEntity.ok(postsByMemberList);
+    }
+
     //상세페이지
     @GetMapping("detail/{id}")
     public ResponseEntity<PostDto> getPostById(@PathVariable Long id){
