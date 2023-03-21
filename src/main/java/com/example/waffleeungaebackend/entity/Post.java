@@ -1,7 +1,10 @@
 package com.example.waffleeungaebackend.entity;
 
 import com.example.waffleeungaebackend.dto.PostDto;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -32,6 +35,8 @@ public class Post {
 
     private Long viewCount = 0L;
 
+    private Long likeCount = 0L; // 좋아요수
+
     private String fileName;
 
     private String filePath;
@@ -48,13 +53,10 @@ public class Post {
     @JoinColumn
     private Member member;
 
-    @ManyToOne
-    @JoinColumn
-    private HeartPost heartPost;
 
 
     @Builder
-    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, Long viewCount, String fileName, String filePath, HeartPost heartPost){
+    public Post(Long postId, String title, String content, LocalDateTime createDate, Category category, Member member, Long viewCount,Long likeCount, String fileName, String filePath){
         this.id = postId;
         this.title = title;
         this.content = content;
@@ -62,9 +64,9 @@ public class Post {
         this.category = category;
         this.member = member;
         this.viewCount = viewCount;
+        this.likeCount = likeCount;
         this.fileName = fileName;
         this.filePath = filePath;
-        this.heartPost = heartPost;
     }
 
     public PostDto toDto() {
@@ -77,8 +79,8 @@ public class Post {
                 .member(member)
                 .fileName(fileName)
                 .filePath(filePath)
-                .heartPost(heartPost)
                 .viewCount(viewCount)
+                .likeCount(likeCount)
                 .build();
     }
 }

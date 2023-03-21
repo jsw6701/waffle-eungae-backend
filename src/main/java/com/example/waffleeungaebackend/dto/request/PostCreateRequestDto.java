@@ -42,6 +42,9 @@ public class PostCreateRequestDto {
     @Nullable
     private Long viewCount;
 
+    @Nullable
+    private Long likeCount;
+
 
     public Post toEntity(Category category, Member member) {
 
@@ -53,6 +56,7 @@ public class PostCreateRequestDto {
                 .fileName(fileName)
                 .filePath(filePath)
                 .viewCount(viewCount)
+                .likeCount(likeCount)
                 .member(member)
                 .build();
     }

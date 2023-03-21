@@ -26,4 +26,19 @@ public class HeartPost {
     // 유저 아이디
     private Member member;
 
+    @Column(nullable = false)
+    private boolean status; // true = 좋아요, false = 좋아요 취소
+
+
+
+    public HeartPost(Post post, Member member) {
+        this.post = post;
+        this.member= member;
+        this.status = true;
+    }
+
+    public void unLikeBoard(Post post) {
+        this.status = false;
+        post.setLikeCount(post.getLikeCount() - 1);
+    }
 }

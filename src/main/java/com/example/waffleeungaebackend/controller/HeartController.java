@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 
 @Slf4j
@@ -19,15 +20,9 @@ public class HeartController {
     private final HeartService heartService;
 
     @PostMapping
-    public ResponseEntity<?> like(@PathVariable Long post_id, @LoginUser MemberDto member) {
-        heartService.like(post_id, member.getMemberId());
-        return new ResponseEntity<String>("ok", HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> likeBoard( @PathVariable Long post_id, @ApiIgnore @LoginUser MemberDto memberDto) {
+        heartService.likeBoard(post_id, memberDto.getMemberId());
+        return new ResponseEntity<>("ok", HttpStatus.OK);
     }
-
-    @DeleteMapping
-    public ResponseEntity<?> unLike(@PathVariable Long post_id, @LoginUser MemberDto member) {
-        heartService.unlike(post_id, member.getMemberId());
-        return new ResponseEntity<String>("ok", HttpStatus.OK);
-    }
-
 }

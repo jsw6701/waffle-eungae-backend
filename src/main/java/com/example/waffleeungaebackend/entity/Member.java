@@ -1,8 +1,6 @@
 package com.example.waffleeungaebackend.entity;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
 
@@ -10,6 +8,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @Entity
 public class Member extends BaseTimeEntity{
     @Id
@@ -52,4 +51,7 @@ public class Member extends BaseTimeEntity{
         return this.role.getKey();
     }
 
+    public void setId(Long memberId) {
+        this.memberId = memberId;
+    }
 }

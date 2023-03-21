@@ -15,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -124,4 +123,6 @@ public class PostServiceImpl implements PostService{
         this.postRepository.save(post);
         return postRepository.findById(id).orElse(null);
     }
+
+
 }

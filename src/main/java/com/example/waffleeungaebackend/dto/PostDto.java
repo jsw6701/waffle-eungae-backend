@@ -22,6 +22,7 @@ public class PostDto {
     private String fileName;
     private String filePath;
     private HeartPost heartPost;
+    private Long likeCount;
 
     public PostDto(Post post){
         this.postId = post.getId();
@@ -33,6 +34,6 @@ public class PostDto {
         this.member = post.getMember();
         this.fileName = post.getFileName();
         this.filePath = post.getFilePath();
-        this.heartPost = post.getHeartPost();
+        this.likeCount = post.getLikeCount();
     }
 }

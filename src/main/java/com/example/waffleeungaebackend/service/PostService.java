@@ -32,4 +32,6 @@ public interface PostService {
 
     Post showDetailPost(Long id);
 
+
+
 }
