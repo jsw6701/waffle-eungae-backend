@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 
-@CrossOrigin
 @AllArgsConstructor
 @RestController
 @RequestMapping("/post")

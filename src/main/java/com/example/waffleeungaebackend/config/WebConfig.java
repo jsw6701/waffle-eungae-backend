@@ -14,16 +14,13 @@ import java.util.List;
 public class WebConfig implements WebMvcConfigurer {
 
     private final LoginUserArgumentResolver loginUserArgumentResolver;
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedMethods("GET", "POST", "PATCH", "DELETE")
-                .allowCredentials(false);
-
+                .allowedOrigins("https://waffle-eungae-frontend.vercel.app","http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                .allowedHeaders("*");
     }
-
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         // HandlerMethodArgumentResolver 구현체를 여기에서 등록해줘야한다.
