@@ -28,15 +28,19 @@ public class HeartServiceImpl implements HeartService {
         log.info("2: {}",member);
         if(heartRepository.findByPostAndMember(post, member) == null) {
             // 좋아요를 누른적 없다면 LikeBoard 생성 후, 좋아요 처리
+            if(post.getLikeCount() == null){
+                post.setLikeCount(0L);
+            }
             post.setLikeCount(post.getLikeCount() + 1);
             log.info("3,4: {}",post.getLikeCount());
             HeartPost heartPost = new HeartPost(post, member); // true 처리
+            postRepository.save(post);
             heartRepository.save(heartPost);
             return "좋아요 처리 완료";
         } else {
-            // 좋아요를 누른적 있다면 취소 처리 후 테이블 삭제
             HeartPost heartPost = heartRepository.findByPostAndMember(post, member);
-            heartPost.unLikeBoard(post);
+            post.setLikeCount(post.getLikeCount() - 1);
+            postRepository.save(post);
             heartRepository.delete(heartPost);
             return "좋아요 취소";
         }
