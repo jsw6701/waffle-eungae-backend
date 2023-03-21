@@ -39,7 +39,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("Eungae")
                 .description("eungae swagger.")
-                .version("0.1")
+                .version("0.2")
                 .build();
     }
 
