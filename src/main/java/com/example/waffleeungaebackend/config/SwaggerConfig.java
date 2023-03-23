@@ -56,6 +56,4 @@ public class SwaggerConfig {
         @ApiModelProperty(value = "정렬(사용법: 컬럼명,ASC|DESC)")
         private List<String> sort;
     }
-
-
 }

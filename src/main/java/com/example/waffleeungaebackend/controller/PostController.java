@@ -32,9 +32,10 @@ public class PostController {
             @ApiIgnore @LoginUser MemberDto member) throws Exception{
         System.out.println("create");
 
-        System.out.println(member.getMemberId());
+
         postCreateRequestDto.setLikeCount(0L);
         postCreateRequestDto.setViewCount(0L);
+
         Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), postCreateRequestDto.getFile());
         return ResponseEntity.ok(new PostDto(post));
     }
@@ -60,6 +61,15 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity<Page<PostDto>> readAll(@PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable){
+        System.out.println("read all");
+
+        Page<PostDto> postList = this.postService.findPostList(pageable);
+
+        return ResponseEntity.ok(postList);
+    }
+
+    @GetMapping("/viewCount")
+    public ResponseEntity<Page<PostDto>> readAllByViewCount(@PageableDefault(sort = "viewCount", direction = Sort.Direction.DESC) Pageable pageable){
         System.out.println("read all");
 
         Page<PostDto> postList = this.postService.findPostList(pageable);

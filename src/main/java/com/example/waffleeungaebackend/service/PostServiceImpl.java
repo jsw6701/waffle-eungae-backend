@@ -56,6 +56,12 @@ public class PostServiceImpl implements PostService{
 
         postCreateRequestDto.setFileName(fileName);
         postCreateRequestDto.setFilePath("/files/" + fileName);
+
+        if(member.getLevel() == null){
+            member.setLevel(0L);
+        }
+        member.setLevel(member.getLevel() + 100);
+        memberRepository.save(member);
         Category category = categoryRepository.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("TODO 생성실패"));
         return postRepository.save(postCreateRequestDto.toEntity(category, member));
     }
@@ -123,6 +129,4 @@ public class PostServiceImpl implements PostService{
         this.postRepository.save(post);
         return postRepository.findById(id).orElse(null);
     }
-
-
 }

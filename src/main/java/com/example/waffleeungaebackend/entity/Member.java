@@ -24,6 +24,8 @@ public class Member extends BaseTimeEntity{
     // 유저 이메일
     private String email;
 
+    private Long level;
+
     @Enumerated(EnumType.STRING)
     @Column
     private Role role;

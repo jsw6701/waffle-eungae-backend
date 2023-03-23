@@ -33,9 +33,9 @@ public class Post {
     // 작성일
     private LocalDateTime createDate;
 
-    private Long viewCount = 0L;
+    private Long viewCount;
 
-    private Long likeCount = 0L; // 좋아요수
+    private Long likeCount; // 좋아요수
 
     private String fileName;
 
