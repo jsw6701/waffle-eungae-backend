@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import springfox.documentation.annotations.ApiIgnore;
 
 @RequiredArgsConstructor
 @Controller
@@ -15,7 +16,7 @@ public class LoginController {
     private final PostService postService;
 
     @GetMapping("/logintest")
-    public String index(Model model, @LoginUser MemberDto user){
+    public String index(Model model, @ApiIgnore @LoginUser MemberDto user){
         // model.addAttribute("post", postService.findAllDesc());
 
         if(user != null){
