@@ -13,12 +13,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/")
 public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @PostMapping
+    @PostMapping("/api/v1/category")
     public ResponseEntity<CategoryDto> create(@RequestBody CategoryCreateRequestDto createRequestDto){
         System.out.println("create");
 
@@ -26,21 +25,21 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryDto(result));
     }
 
-    @GetMapping("/read")
+    @GetMapping("/category/read")
     public ResponseEntity<String> findNameById(Long id){
         System.out.println("find name");
         Category category = this.categoryService.findById(id);
         return ResponseEntity.ok(category.getCategoryName());
     }
 
-    @GetMapping
+    @GetMapping("/category")
     public ResponseEntity<List<CategoryDto>> readAll(){
         System.out.println("read all");
         List<CategoryDto> categoryList = this.categoryService.findAllCategory();
         return ResponseEntity.ok(categoryList);
     }
 
-    @PatchMapping("{id}")
+    @PatchMapping("/api/v1/category/{id}")
     public ResponseEntity<CategoryDto> update(@PathVariable Long id, @RequestBody CategoryPatchRequestDto patchRequestDto){
         System.out.println("update");
 
@@ -48,7 +47,7 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryDto(result));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/category/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         System.out.println("delete");
 
