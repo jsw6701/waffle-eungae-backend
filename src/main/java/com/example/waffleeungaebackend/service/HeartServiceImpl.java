@@ -24,7 +24,7 @@ public class HeartServiceImpl implements HeartService {
         Post post = postRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 게시글이 없습니다."));
         log.info("1: {}",post);
         //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Member member = memberRepository.findById(member_id).orElseThrow(()->new IllegalArgumentException("멤버가 없습ㄴ다."));
+        Member member = memberRepository.findById(member_id).orElseThrow(()->new IllegalArgumentException("멤버가 없습니다."));
         log.info("2: {}",member);
         if(heartRepository.findByPostAndMember(post, member) == null) {
             // 좋아요를 누른적 없다면 LikeBoard 생성 후, 좋아요 처리

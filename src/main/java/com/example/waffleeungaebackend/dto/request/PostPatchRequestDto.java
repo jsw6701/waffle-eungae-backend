@@ -10,9 +10,6 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 @AllArgsConstructor
 public class PostPatchRequestDto {
-
-    private Long postId;
-
     @NotEmpty(message="내용은 필수 항목입니다.")
     private String content;
 
