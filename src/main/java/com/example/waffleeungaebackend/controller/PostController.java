@@ -33,7 +33,8 @@ public class PostController {
         System.out.println("create");
 
         System.out.println(member.getMemberId());
-
+        postCreateRequestDto.setLikeCount(0L);
+        postCreateRequestDto.setViewCount(0L);
         Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), postCreateRequestDto.getFile());
         return ResponseEntity.ok(new PostDto(post));
     }
@@ -42,7 +43,7 @@ public class PostController {
     public ResponseEntity<PostDto> update(
             @PathVariable Long id,
             @RequestBody PostPatchRequestDto patchRequestDto,
-            @LoginUser MemberDto member){
+            @ApiIgnore @LoginUser MemberDto member){
         System.out.println("update");
 
         Post post = postService.updateById(id, patchRequestDto, member.getMemberId());
