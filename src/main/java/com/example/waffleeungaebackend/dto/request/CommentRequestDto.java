@@ -1,6 +1,7 @@
 package com.example.waffleeungaebackend.dto.request;
 
 import com.example.waffleeungaebackend.entity.Comment;
+import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.entity.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,12 +24,13 @@ public class CommentRequestDto {
 
     private Long postId;
 
-    public Comment toEntity(Post post){
+    public Comment toEntity(Post post, Member member){
         return Comment.builder()
                 .commentId(commentId)
                 .content(content)
                 .createDate(LocalDateTime.now())
                 .post(post)
+                .member(member)
                 .build();
     }
 }

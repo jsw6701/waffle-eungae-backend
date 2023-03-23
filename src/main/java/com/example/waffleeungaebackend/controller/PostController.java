@@ -20,12 +20,11 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/post")
 public class PostController {
 
     private final PostService postService;
 
-    @PostMapping(value = "{categoryId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/api/v1/post/{categoryId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<PostDto> create(
             @ModelAttribute PostCreateRequestDto postCreateRequestDto,
             @PathVariable Long categoryId,
@@ -40,7 +39,7 @@ public class PostController {
         return ResponseEntity.ok(new PostDto(post));
     }
 
-    @PatchMapping("{id}")
+    @PatchMapping("/api/v1/post/{id}")
     public ResponseEntity<PostDto> update(
             @PathVariable Long id,
             @RequestBody PostPatchRequestDto patchRequestDto,
@@ -51,7 +50,7 @@ public class PostController {
         return ResponseEntity.ok(new PostDto(post));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/post/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id, @LoginUser MemberDto member){
         System.out.println("delete");
 
@@ -88,7 +87,7 @@ public class PostController {
         return ResponseEntity.ok(postsByCategoryList);
     }
 
-    @GetMapping("memberPost/{memberId}")
+    @GetMapping("/api/v1/memberPost/{memberId}")
     public ResponseEntity<Page<PostDto>> readPostsByMember(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
             @PathVariable Long memberId){
