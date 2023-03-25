@@ -2,7 +2,6 @@ package com.example.waffleeungaebackend.config;
 
 
 import com.example.waffleeungaebackend.config.login.CustomOAuth2MemberService;
-import com.example.waffleeungaebackend.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,6 @@ public class SecurityConfig  {
                 .and()
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/","/css/**","/js/**","h2-console/**","/profile").permitAll()
-                        .antMatchers("/api/v1/**").hasRole(Role.GUEST.name()) // 엔드포인트는 유저 역할을 가진 사람만 허용가능
                         )
                 .formLogin()
                 .loginPage("/login")
