@@ -2,6 +2,8 @@ package com.example.waffleeungaebackend.config;
 
 
 import com.example.waffleeungaebackend.config.login.CustomOAuth2MemberService;
+import com.example.waffleeungaebackend.config.login.MyLoginSuccessHandler;
+import com.example.waffleeungaebackend.entity.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,16 +26,19 @@ public class SecurityConfig  {
                 .and()
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/","/css/**","/js/**","h2-console/**","/profile").permitAll()
+                        .antMatchers("/api/v1/**").hasRole(Role.GUEST.name()) // 엔드포인트는 유저 역할을 가진 사람만 허용가능
                         )
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/")  //로그인 성공후 리다이렉트 주소
-                .and()
+                //.formLogin()
+                //.loginPage("/login")
+                //.defaultSuccessUrl("/")  //로그인 성공후 리다이렉트 주소dd
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")) //logout 요청시 홈으로 이동 - 기본 logout url = "/logout"
-                .oauth2Login(oauth2Login -> oauth2Login //OAuth2 로그인 설정 시작점
+                .oauth2Login() //OAuth2 로그인 설정 시작점
                         .userInfoEndpoint() //OAuth2 로그인 성공 이후 사용자 정보를 가져올 때 설정 담당
-                        .userService(customOAuth2MemberService)); //OAuth2 로그인 성공 시, 작업을 진행할 MemberService
+                        .userService(customOAuth2MemberService)
+                        .and()
+                .successHandler(new MyLoginSuccessHandler()); //OAuth2 로그인 성공 시, 작업을 진행할 MemberService
+
 
         return http.build();
     }
