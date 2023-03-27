@@ -16,6 +16,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig  {
 
+    private final MyLoginSuccessHandler myLoginSuccessHandler;
+
     private final CustomOAuth2MemberService customOAuth2MemberService;
 
     @Bean
@@ -37,8 +39,7 @@ public class SecurityConfig  {
                         .userInfoEndpoint() //OAuth2 로그인 성공 이후 사용자 정보를 가져올 때 설정 담당
                         .userService(customOAuth2MemberService)
                         .and()
-                .successHandler(new MyLoginSuccessHandler()); //OAuth2 로그인 성공 시, 작업을 진행할 MemberService
-
+                .successHandler(myLoginSuccessHandler); //OAuth2 로그인 성공 시, 작업을 진행할 MemberService
 
         return http.build();
     }
