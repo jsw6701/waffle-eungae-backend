@@ -17,7 +17,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @PostMapping("/api/v1/category")
+    @PostMapping("category")
     public ResponseEntity<CategoryDto> create(@RequestBody CategoryCreateRequestDto createRequestDto){
         System.out.println("create");
 
@@ -39,7 +39,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryList);
     }
 
-    @PatchMapping("/api/v1/category/{id}")
+    @PatchMapping("category/{id}")
     public ResponseEntity<CategoryDto> update(@PathVariable Long id, @RequestBody CategoryPatchRequestDto patchRequestDto){
         System.out.println("update");
 
@@ -47,7 +47,7 @@ public class CategoryController {
         return ResponseEntity.ok(new CategoryDto(result));
     }
 
-    @DeleteMapping("/api/v1/category/{id}")
+    @DeleteMapping("category/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         System.out.println("delete");
 

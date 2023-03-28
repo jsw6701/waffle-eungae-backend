@@ -24,7 +24,7 @@ public class PostController {
 
     private final PostService postService;
 
-    @PostMapping(value = "/api/v1/post/{categoryId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "post/{categoryId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<PostDto> create(
             @ModelAttribute PostCreateRequestDto postCreateRequestDto,
             @PathVariable Long categoryId,
@@ -39,7 +39,7 @@ public class PostController {
         return ResponseEntity.ok(new PostDto(post));
     }
 
-    @PatchMapping("/api/v1/post/{id}")
+    @PatchMapping("post/{id}")
     public ResponseEntity<PostDto> update(
             @PathVariable Long id,
             @RequestBody PostPatchRequestDto patchRequestDto,
@@ -50,7 +50,7 @@ public class PostController {
         return ResponseEntity.ok(new PostDto(post));
     }
 
-    @DeleteMapping("/api/v1/post/{id}")
+    @DeleteMapping("post/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id, @LoginUser MemberDto member){
         System.out.println("delete");
 
@@ -87,7 +87,7 @@ public class PostController {
         return ResponseEntity.ok(postsByCategoryList);
     }
 
-    @GetMapping("/api/v1/memberPost/{memberId}")
+    @GetMapping("memberPost/{memberId}")
     public ResponseEntity<Page<PostDto>> readPostsByMember(
             @PageableDefault(sort = "createDate", direction = Sort.Direction.DESC) Pageable pageable,
             @PathVariable Long memberId){

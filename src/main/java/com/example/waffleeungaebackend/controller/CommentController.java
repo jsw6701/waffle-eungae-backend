@@ -19,7 +19,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @PostMapping("/api/v1/{postId}")
+    @PostMapping("{postId}")
     public ResponseEntity<CommentDto> create(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long postId,@ApiIgnore @LoginUser MemberDto member){
         Comment comment = this.commentService.addComment(commentRequestDto, postId,member.getMemberId());
         return ResponseEntity.ok(comment.toDto());

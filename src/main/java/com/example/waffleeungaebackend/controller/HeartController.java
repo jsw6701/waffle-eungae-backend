@@ -14,7 +14,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/post/{post_id}/like")
+@RequestMapping("post/{post_id}/like")
 public class HeartController {
 
     private final HeartService heartService;
