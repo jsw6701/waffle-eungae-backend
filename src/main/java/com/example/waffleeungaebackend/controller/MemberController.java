@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 public class MemberController {
@@ -19,12 +22,28 @@ public class MemberController {
 
 
     @GetMapping("/loginEmail")
-    public ResponseEntity<String> getEmail(@ApiIgnore @LoginUser MemberDto memberDto){
+    public ResponseEntity<String> getLoginEmail(@ApiIgnore @LoginUser MemberDto memberDto){
         return ResponseEntity.ok(memberDto.getEmail());
     }
 
-    @GetMapping("/loginMember")
-    public ResponseEntity<MemberDto> getMember(@ApiIgnore @LoginUser MemberDto memberDto){
-        return ResponseEntity.ok(memberDto);
+    @GetMapping("loginLevel")
+    public ResponseEntity<Long> getLoginLevel(@ApiIgnore @LoginUser MemberDto memberDto){
+        return ResponseEntity.ok(memberDto.getLevel());
     }
+
+    @GetMapping("loginName")
+    public ResponseEntity<String> getLoginName(@ApiIgnore @LoginUser MemberDto memberDto){
+        return ResponseEntity.ok(memberDto.getName());
+    }
+
+    @GetMapping("list")
+    public ResponseEntity<List> getLoginMember(@ApiIgnore @LoginUser MemberDto memberDto){
+        List<Object> list = new ArrayList<>();
+        list.add(memberDto.getMemberId());
+        list.add(memberDto.getEmail());
+        list.add(memberDto.getName());
+        list.add(memberDto.getLevel());
+        return ResponseEntity.ok(list);
+    }
+
 }

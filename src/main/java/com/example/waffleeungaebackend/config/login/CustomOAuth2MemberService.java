@@ -38,7 +38,11 @@ public class CustomOAuth2MemberService implements OAuth2UserService <OAuth2UserR
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
         log.info("attributes.getAttributes() : {} ",attributes.getAttributes().toString() );
         Member member  = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new MemberDto(member));
+        MemberDto memberDto = new MemberDto(member);
+        if(memberDto.getLevel() == null){
+            memberDto.setLevel(0L);
+        }
+        httpSession.setAttribute("user", memberDto);
         /* 세션 정보를 저장하는 직렬화된 dto 클래스*/
 
         return new DefaultOAuth2User(
