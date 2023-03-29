@@ -22,4 +22,9 @@ public class MemberController {
     public ResponseEntity<String> getEmail(@ApiIgnore @LoginUser MemberDto memberDto){
         return ResponseEntity.ok(memberDto.getEmail());
     }
+
+    @GetMapping("/loginMember")
+    public ResponseEntity<MemberDto> getMember(@ApiIgnore @LoginUser MemberDto memberDto){
+        return ResponseEntity.ok(memberDto);
+    }
 }
