@@ -33,8 +33,8 @@ public class SecurityConfig  {
                 //.formLogin()
                 //.loginPage("/login")
                 //.defaultSuccessUrl("/")  //로그인 성공후 리다이렉트 주소dd
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/logout")) //logout 요청시 홈으로 이동 - 기본 logout url = "/logout"
+                //.logout(logout -> logout
+                //        .logoutSuccessUrl("/logout")) //logout 요청시 홈으로 이동 - 기본 logout url = "/logout"
                 .oauth2Login() //OAuth2 로그인 설정 시작점
                         .userInfoEndpoint() //OAuth2 로그인 성공 이후 사용자 정보를 가져올 때 설정 담당
                         .userService(customOAuth2MemberService)
