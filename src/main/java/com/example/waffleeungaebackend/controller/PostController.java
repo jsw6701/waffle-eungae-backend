@@ -15,7 +15,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
+
+import java.io.File;
+import java.util.UUID;
 
 
 @AllArgsConstructor
@@ -35,7 +39,24 @@ public class PostController {
         postCreateRequestDto.setLikeCount(0L);
         postCreateRequestDto.setViewCount(0L);
 
-        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId(), postCreateRequestDto.getFile());
+        MultipartFile file = postCreateRequestDto.getFile();
+
+        if(file != null){
+            String projectPath = System.getProperty("user.dir") + "\\src\\main\\resources\\static\\files";
+
+            UUID uuid = UUID.randomUUID();
+
+            String fileName = uuid + "_" + file.getOriginalFilename();
+
+            File saveFile = new File(projectPath, fileName);
+
+            file.transferTo(saveFile);
+
+            postCreateRequestDto.setFileName(fileName);
+            postCreateRequestDto.setFilePath("/files/" + fileName);
+        }
+
+        Post post = this.postService.addPostList(postCreateRequestDto, categoryId, member.getMemberId());
         return ResponseEntity.ok(new PostDto(post));
     }
 

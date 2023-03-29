@@ -6,7 +6,6 @@ import com.example.waffleeungaebackend.dto.request.PostPatchRequestDto;
 import com.example.waffleeungaebackend.entity.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,7 +14,7 @@ public interface PostService {
 
     Post findById(Long id);
 
-    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId, MultipartFile file) throws IOException;
+    Post addPostList(PostCreateRequestDto postCreateRequestDto, Long categoryId, Long memberId) throws IOException;
 
     void deletePostList(Long id, Long MemberId);
 
