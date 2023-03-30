@@ -5,6 +5,8 @@ import com.example.waffleeungaebackend.entity.Member;
 import com.example.waffleeungaebackend.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -51,6 +53,9 @@ public class CustomOAuth2MemberService implements OAuth2UserService <OAuth2UserR
                 attributes.getNameAttributeKey());
     }
 
+    public Page<Member> readAllMember(Pageable pageable){
+        return memberRepository.findAll(pageable);
+    }
 
     private Member saveOrUpdate(OAuthAttributes attributes) {
         Member member = memberRepository.findByEmail(attributes.getEmail())
