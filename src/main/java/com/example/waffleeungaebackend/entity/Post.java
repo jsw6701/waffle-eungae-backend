@@ -28,6 +28,7 @@ public class Post {
     private String title;
 
     // 게시글 내용
+    @Column(length = 2000)
     private String content;
 
     // 작성일
