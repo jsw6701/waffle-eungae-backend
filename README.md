@@ -48,11 +48,20 @@
 ## 구현 기능
 
 ### 게시글
+- CRUD
 - MultipartFile 이용한 사진 업로드
-- 카테고리
-- 댓글
-- 좋아요
 - 조회수
+
+### 카테고리
+- CRUD
+
+### 댓글
+- CRUD
+- Member 연결
+
+### 좋아요
+- Member 연결
+- 동일 Member가 누를시 -1
 
 ### Member
 - Session Login 방식을 이용한 Google Login
@@ -80,7 +89,7 @@ Backend : Glenn(본인), Nox
 
 ## 역할
 
-Glenn
+### Glenn
 - ERD 작성
 - 카테고리
 - 사진 포함한 게시글, 조회수
@@ -91,7 +100,7 @@ Glenn
 - 프론트가 요청한 API들 구현
 - Docker, Docker-compose 이용한 프로젝트 설정 => 배포는 실패
 
-Nox
+### Nox
 - Session 로그인 구현
 - 좋아요 구현
 - GCP 사용한 배포
