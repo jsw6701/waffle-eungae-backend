@@ -65,7 +65,9 @@
 ## 팀원
 
 Frontend : Jade, Lucy
+
 Frontend URI : https://github.com/GDSC-Daejin/waffle-eungae-frontend
+
 Backend : Glenn(본인), Nox
 
 ---
