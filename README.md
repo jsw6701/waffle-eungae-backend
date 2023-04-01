@@ -4,6 +4,7 @@
   
   ![지구를 (1)](https://user-images.githubusercontent.com/86887824/229299725-e2b25ec8-8acb-4de0-bcd6-44a2080d6f17.png)
   
+  https://user-images.githubusercontent.com/86887824/229303506-9abcd988-75c8-42c8-b75a-881bed6ad26f.mp4
 </p>
 
 
@@ -61,6 +62,11 @@
 ### Swagger 연결
 
 ---
+
+## API
+
+[Swagger UI.pdf](https://github.com/jsw6701/waffle-eungae-backend/files/11130070/Swagger.UI.pdf)
+
 
 ## 팀원
 
