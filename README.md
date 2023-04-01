@@ -100,7 +100,13 @@ Nox
 
 ## Error 사항 해결
 
-
+- 페이징처리 SwaggerConfig 수정
+- MultipartFile API 오류 해결 (MediaType 추가, @RequestBody -> MultipartFile을 넣은 DTO @ModelAttribute)
+- @LoginUser -> @ApiIgnore 추가하여 오류 해결
+- GCP SQL 연결쪽 IP 추가
+- Long 타입 Null 값 DTO에 값 세팅
+- 로그인 세션 local에서는 잘 돌아가는데 배포에서는 Session이 넘어가지지 않는 오류(samesite, secure, httponly 설정)
+- Docker-compose 이용한 프로젝트 실행(배포전까지 프론트에게 API 사용할 수 있게 해줌)
 
 <br>
 
@@ -110,8 +116,11 @@ Nox
 ## 아쉬운 점
 
 <p align="justify">
-- 유저 레벨 기능은 만들었지만 프론트측에서 보여주는 기능 개발 못함
-- 유저 레벨별 명칭 연결 못함
+  - 유저 레벨 기능은 만들었지만 프론트측에서 보여주는 기능 개발 못함
+
+  - 유저 레벨별 명칭 연결 못함
+
+  - Docker-compose 이용한 GCP 배포를 이루려 했으나 실패
 </p>
 
 <br>
