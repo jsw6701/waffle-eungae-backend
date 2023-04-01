@@ -1,9 +1,9 @@
 # Google Solution Challenge(Eung-ae Team)
 
 <p align="center">
-  <br>
+  
   ![지구를 (1)](https://user-images.githubusercontent.com/86887824/229299725-e2b25ec8-8acb-4de0-bcd6-44a2080d6f17.png)
-  <br>
+  
 </p>
 
 
@@ -37,7 +37,7 @@
 
 <br>
 
-##기술 스택
+## 기술 스택
 
 ![캡처](https://user-images.githubusercontent.com/86887824/229299456-33a1b97e-1fd3-44b1-9477-611455b6c9ec.PNG)
 
