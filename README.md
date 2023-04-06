@@ -6,6 +6,7 @@
   
   https://user-images.githubusercontent.com/86887824/229303506-9abcd988-75c8-42c8-b75a-881bed6ad26f.mp4
 </p>
+![icons8-봄-로고 (2)](https://user-images.githubusercontent.com/86887824/230269322-7765cc34-df2a-44c9-bb8b-0e5e51771e27.svg)
 
 
 ## 프로젝트 소개
