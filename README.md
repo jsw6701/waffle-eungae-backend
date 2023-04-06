@@ -42,11 +42,24 @@
 
 ## 기술 스택
 
-![icons8-봄-로고 (4)](https://user-images.githubusercontent.com/86887824/230269834-da8e8bf3-2130-48cc-b155-66f0f124bf16.svg)
+### Application and Data
+|  Java   |  MySQL   |  NGINX   |  Spring Boot  |  GCP   |
+|:-------:|:--------:|:--------:|:-------------:|:------:|
+| ![java] | ![mysql] | ![nginx] | ![springboot] | ![gcp] |
 
+---
+### DevOps
+|  Github   |  Git   |  Intellij   | Docker & Docker-compose |
+|:---------:|:------:|:-----------:|:-----------------------:|
+| ![github] | ![git] | ![intellij] |        ![docker]        |
 
-![캡처](https://user-images.githubusercontent.com/86887824/229299456-33a1b97e-1fd3-44b1-9477-611455b6c9ec.PNG)
+---
+### Business Tools
+|  Slack   |  Notion   |
+|:--------:|:---------:|
+| ![slack] | ![notion] |
 
+---
 <br>
 
 ## 구현 기능
@@ -139,3 +152,20 @@ Backend : Glenn(본인), Nox
 
 <br>
 
+## 라이센스
+
+MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
+
+<!-- Stack Icon Refernces -->
+
+[springboot]: /icon/springboot.svg
+[java]: /icon/java.svg
+[mysql]: /icon/mysql.svg
+[nginx]: /icon/nginx.svg
+[gcp]: /icon/gcp.svg
+[github]: /icon/github.svg
+[git]: /icon/git.svg
+[docker]: /icon/docker.svg
+[intellij]: /icon/intellij.svg
+[slack]: /icon/slack.svg
+[notion]: /icon/notion.svg
