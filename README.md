@@ -7,7 +7,7 @@
   https://user-images.githubusercontent.com/86887824/229303506-9abcd988-75c8-42c8-b75a-881bed6ad26f.mp4
 </p>
 
-
+<a target="_blank" href="https://icons8.com/icon/NAq49sHXDSy5/%EB%B4%84-%EB%A1%9C%EA%B3%A0">봄 로고</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 ## 프로젝트 소개
 
 <p align="justify">
