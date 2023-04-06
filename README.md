@@ -7,7 +7,7 @@
   https://user-images.githubusercontent.com/86887824/229303506-9abcd988-75c8-42c8-b75a-881bed6ad26f.mp4
 </p>
 
-<a target="_blank" href="https://icons8.com/icon/NAq49sHXDSy5/%EB%B4%84-%EB%A1%9C%EA%B3%A0">봄 로고</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 ## 프로젝트 소개
 
 <p align="justify">
@@ -40,6 +40,8 @@
 <br>
 
 ## 기술 스택
+
+![icons8-봄-로고 (1)](https://user-images.githubusercontent.com/86887824/230269167-21c917da-6bf5-44be-b7ed-5818595df80d.svg)
 
 ![캡처](https://user-images.githubusercontent.com/86887824/229299456-33a1b97e-1fd3-44b1-9477-611455b6c9ec.PNG)
 
@@ -98,6 +100,7 @@ Backend : Glenn(본인), Nox
 - 스웨거 연결
 - 로그인 대상 정보 조회 API
 - 프론트가 요청한 API들 구현
+
 - Docker, Docker-compose 이용한 프로젝트 설정 => 배포는 실패
 
 ### Nox
