@@ -46,6 +46,8 @@
 
 ![icons8-봄-로고 (1)](https://user-images.githubusercontent.com/86887824/230269167-21c917da-6bf5-44be-b7ed-5818595df80d.svg)
 
+![icons8-봄-로고 (3)](https://user-images.githubusercontent.com/86887824/230269727-a04b9adf-6e2f-4d73-a8f1-c2ed94875d89.svg)
+
 ![캡처](https://user-images.githubusercontent.com/86887824/229299456-33a1b97e-1fd3-44b1-9477-611455b6c9ec.PNG)
 
 <br>
